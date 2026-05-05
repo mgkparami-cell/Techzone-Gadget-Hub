@@ -1,0 +1,1222 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TechZone</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2fe, #bae6fd, #7dd3fc);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Custom Animation Keyframes */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes slideInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes slideInRight {
+      from {
+        opacity: 0;
+        transform: translateX(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes zoomIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 5px rgba(56, 189, 248, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 0 20px rgba(56, 189, 248, 0.8);
+      }
+    }
+
+    .fadeInUp {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .slideInLeft {
+      animation: slideInLeft 0.8s ease-out;
+    }
+
+    .slideInRight {
+      animation: slideInRight 0.8s ease-out;
+    }
+
+    .zoomIn {
+      animation: zoomIn 0.8s ease-out;
+    }
+
+    header {
+      background: rgba(15, 23, 42, 0.95);
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      animation: slideInDown 0.6s ease-out;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 1px;
+      transition: all 0.3s ease;
+    }
+
+    .logo:hover {
+      animation: pulse-glow 1.5s infinite;
+      filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6));
+    }
+
+    .logo span {
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: 0.3s;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-size: 15px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: #38bdf8;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    .hero {
+      min-height: 90vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 60px 8%;
+      background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)),
+        url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+    }
+
+    .hero h1 {
+      font-size: 52px;
+      margin-bottom: 20px;
+      line-height: 1.2;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero h1 span {
+      color: #38bdf8;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #e2e8f0;
+      margin-bottom: 30px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-buttons {
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .hero-buttons a {
+      display: inline-block;
+      margin: 10px;
+      padding: 14px 28px;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg, #a855f7, #7c3aed);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(168, 85, 247, 0.5);
+    }
+
+    .btn-secondary {
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      color: #fff;
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 12px 25px rgba(236, 72, 153, 0.5);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 36px;
+      background: linear-gradient(90deg, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .section-title p {
+      color: #1e293b;
+      font-size: 16px;
+      animation: fadeInUp 0.8s ease-out 0.1s both;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .category h2 {
+      font-size: 30px;
+      margin-bottom: 25px;
+      color: #f97316;
+      border-left: 6px solid #38bdf8;
+      padding-left: 15px;
+      animation: slideInLeft 0.8s ease-out;
+      transition: all 0.3s ease;
+    }
+
+    .category h2:hover {
+      border-left-color: #f97316;
+      padding-left: 20px;
+    }
+
+    .highlight-grid,
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .highlight-card,
+    .product-card {
+      background: rgba(255, 255, 255, 0.07);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .highlight-card:hover,
+    .product-card:hover {
+      animation: none;
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(56, 189, 248, 0.3);
+      border-color: rgba(56, 189, 248, 0.5);
+    }
+
+    .highlight-card img,
+    .product-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .highlight-card:hover img,
+    .product-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card-content {
+      padding: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      color: dark blue;
+      animation: pulse 2s infinite;
+    }
+
+    .offer {
+      background: #ef4444;
+    }
+
+    .new {
+      background: #22c55e;
+    }
+
+    .hot {
+      background: #8b5cf6;
+    }
+
+    .card-content h3 {
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #0f172a;
+      transition: color 0.3s ease;
+    }
+
+    .product-card:hover .card-content h3,
+    .highlight-card:hover .card-content h3 {
+      color: #a855f7;
+    }
+
+    .card-content p {
+      color: #334155;
+      font-size: 15px;
+      margin-bottom: 15px;
+      transition: color 0.3s ease;
+    }
+
+    .product-card:hover .card-content p,
+    .highlight-card:hover .card-content p {
+      color: #e2e8f0;
+    }
+
+    .price {
+      font-size: 22px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 8px;
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover .price,
+    .highlight-card:hover .price {
+      font-size: 24px;
+      text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+    }
+
+    .availability {
+      font-size: 14px;
+      font-weight: bold;
+      animation: pulse 1.5s infinite;
+    }
+
+    .in-stock {
+      color: #22c55e;
+    }
+
+    .low-stock {
+      color: #f59e0b;
+    }
+
+    .out-stock {
+      color: #ef4444;
+    }
+
+    .category {
+      margin-top: 50px;
+    }
+
+    .category h2 {
+      font-size: 30px;
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #a855f7, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      border-left: 6px solid #a855f7;
+      padding-left: 15px;
+      animation: slideInLeft 0.8s ease-out;
+      transition: all 0.3s ease;
+    }
+
+    .category h2:hover {
+      border-left-color: #ec4899;
+      padding-left: 20px;
+    }
+
+    .newsletter {
+      background: linear-gradient(135deg, #a855f7, #7c3aed, #ec4899);
+      border-radius: 20px;
+      padding: 40px;
+      text-align: center;
+      margin-top: 30px;
+      animation: zoomIn 0.8s ease-out;
+    }
+
+    .newsletter h2 {
+      font-size: 34px;
+      margin-bottom: 15px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .newsletter p {
+      margin-bottom: 20px;
+      font-size: 16px;
+      animation: fadeInUp 0.8s ease-out 0.1s both;
+    }
+
+    .newsletter form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .newsletter input {
+      padding: 14px;
+      width: 320px;
+      border: none;
+      border-radius: 30px;
+      outline: none;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter input:focus {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(56, 189, 248, 0.5);
+    }
+
+    .newsletter button {
+      padding: 14px 24px;
+      border: none;
+      border-radius: 30px;
+      background: #f97316;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter button:hover {
+      background: #7c3aed;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+    }
+
+    /* Search & Filter Styles */
+    .search-filter-section {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-bottom: 40px;
+      align-items: center;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .search-container {
+      flex: 1;
+      min-width: 250px;
+      position: relative;
+    }
+
+    .search-container input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 50px;
+      border: 2px solid rgba(168, 85, 247, 0.3);
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      outline: none;
+    }
+
+    .search-container input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    .search-container input:focus {
+      border-color: #a855f7;
+      background: rgba(168, 85, 247, 0.1);
+      box-shadow: 0 0 15px rgba(168, 85, 247, 0.3);
+    }
+
+    .search-btn {
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #a855f7, #7c3aed);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .search-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);
+    }
+
+    .filter-container {
+      background: rgba(168, 85, 247, 0.05);
+      border: 2px solid rgba(168, 85, 247, 0.2);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .filter-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #a855f7;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .filter-group {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .filter-option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .filter-option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: #a855f7;
+    }
+
+    .filter-option label {
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .price-range-container {
+      margin-top: 20px;
+    }
+
+    .price-range-label {
+      font-size: 14px;
+      color: #1e293b;
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .price-inputs {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .price-input {
+      flex: 1;
+      padding: 10px;
+      border: 2px solid rgba(168, 85, 247, 0.3);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #ffffff;
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+
+    .price-input:focus {
+      border-color: #a855f7;
+      background: rgba(168, 85, 247, 0.1);
+      outline: none;
+    }
+
+    .price-separator {
+      color: #a855f7;
+      font-weight: bold;
+    }
+
+    .apply-filter-btn {
+      margin-top: 15px;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #ec4899, #f43f5e);
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+
+    .apply-filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.4);
+    }
+
+    footer {
+      background: #020617;
+      text-align: center;
+      padding: 25px;
+      margin-top: 50px;
+      color: #94a3b8;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      nav {
+        text-align: center;
+      }
+
+      nav a {
+        display: inline-block;
+        margin: 8px 10px;
+      }
+
+      .hero h1 {
+        font-size: 36px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .newsletter {
+        padding: 30px 20px;
+      }
+
+      .newsletter h2 {
+        font-size: 28px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Tech<span>Zone</span></div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#offers">Offers</a>
+      <a href="#smartphones">Smartphones</a>
+      <a href="#laptops">Laptops</a>
+      <a href="#audio">Audio</a>
+      <a href="#wearables">Wearables</a>
+      <a href="#gaming">Gaming</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Discover the Future of <span>Smart Gadgets</span></h1>
+      <p>
+        Welcome to TechZone Gadget Hub – your trusted destination for smartphones,
+        laptops, headphones, wearables, and gaming accessories with modern style and unbeatable offers.
+      </p>
+      <div class="hero-buttons">
+        <a href="#offers" class="btn-primary">View Offers</a>
+        <a href="#smartphones" class="btn-secondary">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="offers">
+    <div class="section-title wow" data-wow-animation="fadeInUp">
+      <h2>Special Offers & New Arrivals</h2>
+      <p>Check out our latest deals and trending gadgets.</p>
+    </div>
+
+    <div class="highlight-grid">
+      <div class="highlight-card wow" data-wow-animation="fadeInUp" data-wow-delay="0s">
+      <img src=" https://image.made-in-china.com/202f0j00bUBvTOeIrPqw/High-Quality-Wireless-Max-Headphone-Anc-PRO-Max-Wireless-Headphones-with-Mic-Stereo-Sound-Max-Sport-Waterproof-Headset.webp" >      <div class="card-content">
+          <span class="badge offer">SPECIAL OFFER</span>
+          <h3>SoundMax Wireless Headphones</h3>
+          <p>Premium sound quality with deep bass, noise isolation, and 20-hour battery backup.</p>
+          <div class="price">Rs. 25,500</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="highlight-card wow" data-wow-animation="fadeInUp" data-wow-delay="0.1s">
+        <img src="https://media.wired.com/photos/612914e967168b68f9ececa6/master/pass/Gear-Samsung-Galaxy-Watch4-and-Watch4-Classic-SOURCE-Samsung.jpg"
+          alt="Smart Watch">
+        <div class="card-content">
+          <span class="badge new">NEW ARRIVAL</span>
+          <h3>ActiveFit Smart Watch</h3>
+          <p>Track your fitness, monitor heart rate, and stay connected with a stylish AMOLED display.</p>
+          <div class="price">Rs. 29,990</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="highlight-card wow" data-wow-animation="fadeInUp" data-wow-delay="0.2s">
+        <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=1200&q=80"
+          alt="Gaming Accessories">
+        <div class="card-content">
+          <span class="badge hot">HOT DEAL</span>
+          <h3>RGB Gaming Combo Set</h3>
+          <p>Mechanical keyboard, gaming mouse, and headset combo for an immersive experience.</p>
+          <div class="price">Rs. 24,500</div>
+          <div class="availability low-stock">Low Stock</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="smartphones">
+    <h2>Smartphones</h2>
+
+    <!-- Search and Filter Section -->
+    <div class="search-filter-section">
+      <div class="search-container">
+        <input type="text" placeholder="Search smartphones..." id="searchBox">
+      </div>
+      <button class="search-btn" onclick="searchProducts()">🔍 Search</button>
+    </div>
+
+    <!-- Price Filter Section -->
+    <div class="filter-container">
+      <div class="filter-title">⚙️ Filter Options</div>
+
+      <div class="filter-group">
+        <div class="filter-option">
+          <input type="checkbox" id="inStock" checked>
+          <label for="inStock">In Stock</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" id="lowStock">
+          <label for="lowStock">Low Stock</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" id="outStock">
+          <label for="outStock">Out of Stock</label>
+        </div>
+      </div>
+
+      <div class="price-range-container">
+        <label class="price-range-label">💰 Price Range (Rs.)</label>
+        <div class="price-inputs">
+          <input type="number" class="price-input" id="minPrice" placeholder="Min" min="0">
+          <span class="price-separator">-</span>
+          <input type="number" class="price-input" id="maxPrice" placeholder="Max" min="0">
+        </div>
+      </div>
+
+      <button class="apply-filter-btn" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://celltronics.lk/wp-content/uploads/2025/12/OnePlus-15R-1-768x768.webp"
+          alt="Smartphone 1">
+        <div class="card-content">
+          <h3>OnePlus 15R</h3>
+          <p>6.7-inch OLED display, 256GB storage, and advanced camera system for stunning photography.</p>
+          <div class="price">Rs. 189,000</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.macrumors.com/article-new/2023/09/iPhone-15-General-Feature-Black.jpg"
+          alt="Smartphone 2">
+        <div class="card-content">
+          <h3>I phone 15</h3>
+          <p>Powerful performance with long battery life and fast charging for everyday use.</p>
+          <div class="price">Rs. 145,500</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.samsung.com/levant/smartphones/galaxy-s24-ultra/images/galaxy-s24-ultra-highlights-color-titanium-gray-back-mo.jpg?imbypass=true"
+          alt="Smartphone 3">
+        <div class="card-content">
+          <h3> Samsung Galaxy S24 Ultra</h3>
+          <p>Compact design with AI camera features and smooth performance for modern users.</p>
+          <div class="price">Rs. 282,990</div>
+          <div class="availability low-stock">Low Stock</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="laptops">
+    <h2>Laptops</h2>
+
+    <div class="search-filter-section">
+      <div class="search-container">
+        <input type="text" placeholder="Search laptops..." id="searchBoxLaptops">
+      </div>
+      <button class="search-btn" onclick="searchProducts()">🔍 Search</button>
+    </div>
+
+    <div class="filter-container">
+      <div class="filter-title">⚙️ Filter Options</div>
+      <div class="filter-group">
+        <div class="filter-option">
+          <input type="checkbox" id="inStockLaptops" checked>
+          <label for="inStockLaptops">In Stock</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" id="lowStockLaptops">
+          <label for="lowStockLaptops">Low Stock</label>
+        </div>
+      </div>
+      <div class="price-range-container">
+        <label class="price-range-label">💰 Price Range (Rs.)</label>
+        <div class="price-inputs">
+          <input type="number" class="price-input" id="minPriceLaptops" placeholder="Min" min="0">
+          <span class="price-separator">-</span>
+          <input type="number" class="price-input" id="maxPriceLaptops" placeholder="Max" min="0">
+        </div>
+      </div>
+      <button class="apply-filter-btn" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://sc04.alicdn.com/kf/H493906428d534a908829da2948dea38fx.jpg"
+          alt="Laptop 1">
+        <div class="card-content">
+          <h3>UltraBook Air 14</h3>
+          <p>Lightweight laptop with fast SSD storage, ideal for students and professionals.</p>
+          <div class="price">Rs. 235,000</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://laptopmedia.com/wp-content/uploads/2022/02/3-6-1.jpg"
+          alt="Laptop 2">
+        <div class="card-content">
+          <h3>ASUS ZenBook Pro Duo 15 OLED</h3>
+          <p>Designed for creative work, video editing, and multitasking with powerful performance.</p>
+          <div class="price">Rs. 319,000</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.androidauthority.com/wp-content/uploads/2024/07/ASUS-ROG-Strix-G16-gaming-laptop.jpg"
+          alt="Laptop 3">
+        <div class="card-content">
+          <h3> ASUS ROG Strix G16 gaming laptop </h3>
+          <p>High-performance gaming laptop with dedicated graphics and smooth refresh rate display.</p>
+          <div class="price">Rs. 465,000</div>
+          <div class="availability low-stock">Low Stock</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="audio">
+    <h2>Audio & Headphones</h2>
+
+    <div class="search-filter-section">
+      <div class="search-container">
+        <input type="text" placeholder="Search audio & headphones..." id="searchBoxAudio">
+      </div>
+      <button class="search-btn" onclick="searchProducts()">🔍 Search</button>
+    </div>
+
+    <div class="filter-container">
+      <div class="filter-title">⚙️ Filter Options</div>
+      <div class="filter-group">
+        <div class="filter-option">
+          <input type="checkbox" id="inStockAudio" checked>
+          <label for="inStockAudio">In Stock</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" id="outStockAudio">
+          <label for="outStockAudio">Out of Stock</label>
+        </div>
+      </div>
+      <div class="price-range-container">
+        <label class="price-range-label">💰 Price Range (Rs.)</label>
+        <div class="price-inputs">
+          <input type="number" class="price-input" id="minPriceAudio" placeholder="Min" min="0">
+          <span class="price-separator">-</span>
+          <input type="number" class="price-input" id="maxPriceAudio" placeholder="Max" min="0">
+        </div>
+      </div>
+      <button class="apply-filter-btn" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://gulfowndigitalhub.com/public/uploads/all/4OYuluocHCMrxBZjuien1kuqFxamsCmFL6Oteufq.webp"
+          alt="Headphone 1">
+        <div class="card-content">
+          <h3>GOBOULT Flex wireless over-ear headphone</h3>
+          <p>Enjoy immersive audio with soft ear cushions and active noise cancellation.</p>
+          <div class="price">Rs. 22,000</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://p16-oec-sg.ibyteimg.com/tos-alisg-i-aphluv4xwc-sg/fc805a70422c44aca25bd869e9f93fc7~tplv-aphluv4xwc-origin-jpeg.jpeg?dr=15568&t=555f072d&ps=933b5bde&shp=a3510d86&shcp=6ce186a1&idc=my3&from=2739998086"
+          alt="Earbuds">
+        <div class="card-content">
+          <h3>MiniPods Air</h3>
+          <p>Wireless earbuds with crystal-clear sound, compact charging case, and stable connection.</p>
+          <div class="price">Rs. 13,500</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=1200&q=80"
+          alt="Speaker">
+        <div class="card-content">
+          <h3>Pulse Speaker X</h3>
+          <p>Portable Bluetooth speaker with rich sound quality and water-resistant design.</p>
+          <div class="price">Rs. 17,900</div>
+          <div class="availability out-stock">Out of Stock</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="wearables">
+    <h2>Smartwatches / Wearables</h2>
+
+    <div class="search-filter-section">
+      <div class="search-container">
+        <input type="text" placeholder="Search wearables..." id="searchBoxWearables">
+      </div>
+      <button class="search-btn" onclick="searchProducts()">🔍 Search</button>
+    </div>
+
+    <div class="filter-container">
+      <div class="filter-title">⚙️ Filter Options</div>
+      <div class="filter-group">
+        <div class="filter-option">
+          <input type="checkbox" id="inStockWearables" checked>
+          <label for="inStockWearables">In Stock</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" id="lowStockWearables">
+          <label for="lowStockWearables">Low Stock</label>
+        </div>
+      </div>
+      <div class="price-range-container">
+        <label class="price-range-label">💰 Price Range (Rs.)</label>
+        <div class="price-inputs">
+          <input type="number" class="price-input" id="minPriceWearables" placeholder="Min" min="0">
+          <span class="price-separator">-</span>
+          <input type="number" class="price-input" id="maxPriceWearables" placeholder="Max" min="0">
+        </div>
+      </div>
+      <button class="apply-filter-btn" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://5.imimg.com/data5/SELLER/Default/2022/8/XZ/MK/OJ/94788306/fitpro-smart-watch-band-500x500.jpg"
+          alt="Watch 1">
+        <div class="card-content">
+          <h3>FitPro Smart Watch</h3>
+          <p>Stylish smartwatch with health tracking, notifications, and long battery life.</p>
+          <div class="price">Rs. 31,500</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://media.4rgos.it/i/Argos/7866319_R_Z009A"
+          alt="Watch 2">
+        <div class="card-content">
+          <h3>SportBand Active</h3>
+          <p>Track steps, calories, and workouts with a comfortable lightweight wearable design.</p>
+          <div class="price">Rs. 12,990</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://www.joyflorist.in/uploaded/product/IND12609.webp"
+          alt="Watch 3">
+        <div class="card-content">
+          <h3>Noise pulse 3 max</h3>
+          <p>Premium metal body wearable with advanced monitoring and elegant display.</p>
+          <div class="price">Rs. 42,000</div>
+          <div class="availability low-stock">Low Stock</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="category" id="gaming">
+    <h2>Gaming Accessories</h2>
+
+    <div class="search-filter-section">
+      <div class="search-container">
+        <input type="text" placeholder="Search gaming accessories..." id="searchBoxGaming">
+      </div>
+      <button class="search-btn" onclick="searchProducts()">🔍 Search</button>
+    </div>
+
+    <div class="filter-container">
+      <div class="filter-title">⚙️ Filter Options</div>
+      <div class="filter-group">
+        <div class="filter-option">
+          <input type="checkbox" id="inStockGaming" checked>
+          <label for="inStockGaming">In Stock</label>
+        </div>
+        <div class="filter-option">
+          <input type="checkbox" id="lowStockGaming">
+          <label for="lowStockGaming">Low Stock</label>
+        </div>
+      </div>
+      <div class="price-range-container">
+        <label class="price-range-label">💰 Price Range (Rs.)</label>
+        <div class="price-inputs">
+          <input type="number" class="price-input" id="minPriceGaming" placeholder="Min" min="0">
+          <span class="price-separator">-</span>
+          <input type="number" class="price-input" id="maxPriceGaming" placeholder="Max" min="0">
+        </div>
+      </div>
+      <button class="apply-filter-btn" onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?auto=format&fit=crop&w=1200&q=80"
+          alt="Gaming keyboard">
+        <div class="card-content">
+          <h3>Mechanical RGB Keyboard</h3>
+          <p>Responsive keys with RGB lighting, durable build, and fast gaming performance.</p>
+          <div class="price">Rs. 16,500</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=1200&q=80"
+          alt="Gaming mouse">
+        <div class="card-content">
+          <h3>SpeedFire Gaming Mouse</h3>
+          <p>High-precision mouse with ergonomic grip and customizable DPI settings.</p>
+          <div class="price">Rs. 8,900</div>
+          <div class="availability in-stock">In Stock</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1593118247619-e2d6f056869e?auto=format&fit=crop&w=1200&q=80"
+          alt="Gaming headset">
+        <div class="card-content">
+          <h3>Storm Gaming Headset</h3>
+          <p>Surround sound audio with noise-canceling microphone for competitive gaming.</p>
+          <div class="price">Rs. 19,500</div>
+          <div class="availability low-stock">Low Stock</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="newsletter wow" data-wow-animation="zoomIn" id="contact">
+      <h2>Subscribe for Latest Updates</h2>
+      <p>Get updates on new arrivals, special offers, and trending gadgets directly to your inbox.</p>
+      <form>
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe Now</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>TechZone Gadget Hub</strong></p>
+    <p>Email: techzone@gmail.lk | Phone: +94 76926589</p>
+    <p>&copy; 2026 TechZone Gadget Hub. All Rights Reserved.</p>
+  </footer>
+
+  <!-- WOW.js CDN for scroll animations -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
+  <script>
+    // Initialize WOW.js for scroll animations
+    new WOW().init();
+
+    // Add smooth animation to product cards on load
+    document.addEventListener('DOMContentLoaded', function () {
+      const cards = document.querySelectorAll('.product-card, .highlight-card');
+      cards.forEach((card, index) => {
+        card.setAttribute('data-wow-animation', 'fadeInUp');
+        card.setAttribute('data-wow-delay', (index * 0.1) + 's');
+        card.classList.add('wow');
+      });
+    });
+
+    // Search functionality
+    function searchProducts() {
+      const searchInputs = document.querySelectorAll('[id^="searchBox"]');
+      searchInputs.forEach(input => {
+        const query = input.value.toLowerCase();
+        const section = input.closest('section');
+        const cards = section.querySelectorAll('.product-card, .highlight-card');
+
+        cards.forEach(card => {
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          const description = card.querySelector('p').textContent.toLowerCase();
+
+          if (title.includes(query) || description.includes(query) || query === '') {
+            card.style.display = 'block';
+            card.style.animation = 'fadeInUp 0.6s ease-out';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    }
+
+    // Filter functionality
+    function applyFilters() {
+      const sections = document.querySelectorAll('.category');
+
+      sections.forEach(section => {
+        const cards = section.querySelectorAll('.product-card, .highlight-card');
+        const inStockCheckbox = section.querySelector('[id$="InStock"]');
+        const lowStockCheckbox = section.querySelector('[id$="LowStock"]');
+        const outStockCheckbox = section.querySelector('[id$="OutStock"]');
+        const minPriceInput = section.querySelector('[id^="minPrice"]');
+        const maxPriceInput = section.querySelector('[id^="maxPrice"]');
+
+        const minPrice = minPriceInput ? parseInt(minPriceInput.value) || 0 : 0;
+        const maxPrice = maxPriceInput ? parseInt(maxPriceInput.value) || Infinity : Infinity;
+
+        cards.forEach(card => {
+          let showCard = true;
+
+          // Price filter
+          const priceText = card.querySelector('.price').textContent.replace(/[^\d]/g, '');
+          const price = parseInt(priceText);
+          if (price < minPrice || price > maxPrice) {
+            showCard = false;
+          }
+
+          // Stock filter
+          const availability = card.querySelector('.availability');
+          if (availability) {
+            const isInStock = availability.classList.contains('in-stock');
+            const isLowStock = availability.classList.contains('low-stock');
+            const isOutStock = availability.classList.contains('out-stock');
+
+            const showInStock = inStockCheckbox ? inStockCheckbox.checked && isInStock : true;
+            const showLowStock = lowStockCheckbox ? lowStockCheckbox.checked && isLowStock : true;
+            const showOutStock = outStockCheckbox ? outStockCheckbox.checked && isOutStock : true;
+
+            if (!showInStock && !showLowStock && !showOutStock) {
+              showCard = false;
+            }
+          }
+
+          card.style.display = showCard ? 'block' : 'none';
+          if (showCard) {
+            card.style.animation = 'fadeInUp 0.6s ease-out';
+          }
+        });
+      });
+    }
+
+    // Real-time search
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchInputs = document.querySelectorAll('[id^="searchBox"]');
+      searchInputs.forEach(input => {
+        input.addEventListener('keyup', searchProducts);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
